@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "spectrum-bridge-ai": {
+      "command": "python",
+      "args": [
+        "/Users/saranyajs/Documents/Spectrum_Bridge/SpectrumBridge-AI/mcp_server/server.py"
+      ],
+      "env": {
+        "PYTHONPATH": "/Users/saranyajs/Documents/Spectrum_Bridge/SpectrumBridge-AI"
+      }
+    }
+  }
+}

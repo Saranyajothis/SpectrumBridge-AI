@@ -1,0 +1,41 @@
+# === MINIMAL CORE (Will auto-resolve ALL conflicts)
+google-generativeai
+sentence-transformers
+huggingface-hub
+pymongo
+fastapi
+uvicorn[standard]
+python-dotenv
+
+# === AI Agents (Flexible versions)
+langchain
+langchain-community
+langchain-google-genai
+
+# === Document Processing
+pypdf2
+reportlab
+pillow
+requests
+
+# === Local Image Generation
+diffusers
+transformers
+accelerate
+torch
+torchvision
+safetensors
+
+# === MCP (Latest stable - pip will pick compatible)
+fastmcp
+mcp
+pydantic
+aiofiles
+
+# === LLM APIs
+groq
+replicate
+
+# === Testing
+pytest
+pytest-cov

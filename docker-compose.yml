@@ -1,0 +1,56 @@
+# Spectrum Bridge AI - Docker Compose
+# Orchestrates all services
+
+version: '3.8'
+
+services:
+  # Main Application
+  spectrum-bridge-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spectrum-bridge-ai
+    ports:
+      - "8000:8000"
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - MONGODB_URI=${MONGODB_URI}
+      - HF_TOKEN=${HF_TOKEN}
+    volumes:
+      - ./knowledge_base:/app/knowledge_base
+      - ./output:/app/output
+      - ./agents:/app/agents
+      - ./scripts:/app/scripts
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - spectrum-network
+
+  # MCP Server (Optional - for Claude Desktop integration)
+  mcp-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: spectrum-mcp-server
+    command: python mcp_server/server.py
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - MONGODB_URI=${MONGODB_URI}
+      - HF_TOKEN=${HF_TOKEN}
+    volumes:
+      - ./knowledge_base:/app/knowledge_base
+      - ./output:/app/output
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - spectrum-network
+
+networks:
+  spectrum-network:
+    driver: bridge
+
+volumes:
+  knowledge_base:
+  output:
