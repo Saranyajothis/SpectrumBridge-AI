@@ -266,3 +266,4 @@ if __name__ == "__main__":
         print("✅ Social story generated successfully!")
     else:
         print(f"❌ Failed: {result['error']}")
+# Updated: Dec 28, 2025
